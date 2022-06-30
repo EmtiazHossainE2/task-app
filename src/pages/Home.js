@@ -8,6 +8,7 @@ import useTodos from '../hooks/useTodos';
 
 const Home = () => {
     const {todos, isLoading, refetch} = useTodos()
+    
 
     if (isLoading) {
         return <Loading />

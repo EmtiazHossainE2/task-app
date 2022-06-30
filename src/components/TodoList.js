@@ -71,11 +71,8 @@ const TodoList = ({ todos, refetch,isLoading }) => {
         return <Loading/>
     }
 
-
-
-
     return (
-        <div className='flex flex-col gap-5 mt-10'>
+        <div className='flex flex-col gap-5 mt-10 '>
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -120,6 +117,7 @@ const TodoList = ({ todos, refetch,isLoading }) => {
                     todo={todo}
                     openModal={openModal}
                     setTask={setTask}
+                    refetch={refetch}
                 >
                 </TodoItems>)
             }

@@ -14,7 +14,8 @@ const AddForm = ({refetch}) => {
         const todoInfo = {
             title: title.current.value,
             date: date.current.value,
-            task: taskRef.current.value
+            task: taskRef.current.value,
+            completed: false 
         }
         // console.log(todoInfo);
         axios.post(`${BASE_API}/addtodo`, todoInfo)
