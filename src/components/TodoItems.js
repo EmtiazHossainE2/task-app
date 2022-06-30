@@ -10,7 +10,7 @@ const TodoItems = () => {
     }
 
     return (
-        <div className='px-4 py-3 flex items-center gap-5 border-2 border-zinc-400'>
+        <div className='px-4 py-3 flex items-center gap-5 border-2 border-zinc-400 rounded-md'>
             {edit
                 ? <input type="text" className='outline-none p-2 focus:ring-1 focus:ring-blue-400 w-full' defaultValue="This is a simple text" />
                 : <p className='text-xl font-semibold'>This is a sample text</p>
@@ -19,7 +19,8 @@ const TodoItems = () => {
                 ? <button
                     onClick={editMode}
                     className='px-3 py-2 ml-auto bg-green-500 text-white rounded-md'>
-                    <BsSave/>
+                    {/* <BsSave/> */}
+                    Save
                 </button>
 
                 : <button
