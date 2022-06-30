@@ -4,7 +4,7 @@ import Layout from './Layout';
 const NotFound = () => {
     return (
         <Layout>
-            <h2 className='py-5 text-center'>404 | This page is not available  </h2>
+            <h2 className='py-20 text-center text-2xl '>404 | This page is not available  </h2>
         </Layout>
     );
 };

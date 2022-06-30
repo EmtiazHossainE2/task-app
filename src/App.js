@@ -5,16 +5,18 @@ import Completed from './pages/Completed';
 import Todos from './pages/Todos';
 import Calendar from './pages/Calendar';
 import NotFound from './components/NotFound';
+import  { Toaster } from 'react-hot-toast';
 
 const App = () => {
     return (
         <div>
+            <Toaster />
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/completed' element={<Completed/>}/>
                 <Route path='/todos' element={<Todos/>}/>
                 <Route path='/calendar' element={<Calendar/>}/>
-                <Route path='*' element={NotFound}></Route>
+                <Route path='*' element={<NotFound/>}></Route>
             </Routes>
         </div>
     );
