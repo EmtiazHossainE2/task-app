@@ -8,7 +8,7 @@ import 'react-day-picker/dist/style.css';
 const Calendar = () => {
     const [selected, setSelected] = useState();
 
-    let footer = <p>Please pick a day.</p>;
+    let footer = <p className='mt-5 font-bold'>Please pick a day. </p>;
     if (selected) {
         footer = <p className='mt-5 font-bold'>You picked {format(selected, 'PP')}.</p>;
     }

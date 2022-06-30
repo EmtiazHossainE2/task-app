@@ -5,7 +5,7 @@ import Page from '../components/Page';
 import useTodos from '../hooks/useTodos';
 
 const Completed = () => {
-    const {todos, isLoading, refetch} = useTodos(true)
+    const {todos, refetch} = useTodos(true)
 
     return (
         <Page>
@@ -17,6 +17,7 @@ const Completed = () => {
                             key={todo._id}
                             index={index}
                             todo={todo}
+                            refetch={refetch}
                         >
                         </CompletedItem>)
                     }
