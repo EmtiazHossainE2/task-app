@@ -1,8 +1,10 @@
 import React from 'react'
 import { FiEdit } from 'react-icons/fi';
 
-const TodoItems = ({ todo, index }) => {
-    const { title, date, task } = todo
+
+
+const TodoItems = ({ todo, index,openModal }) => {
+    const { title, date, task, _id } = todo
 
     return (
         <div className='px-4 py-3 flex justify-between gap-5 border-2 border-zinc-400 rounded-md'>
@@ -15,7 +17,7 @@ const TodoItems = ({ todo, index }) => {
 
             </div>
             <div>
-                <button
+                <button onClick={openModal}
                     className='px-3 py-2 ml-auto bg-zinc-700 text-white rounded-md'>
                     <FiEdit />
                 </button>
