@@ -46,7 +46,7 @@ const CompletedItem =  ({ todo, index,refetch }) => {
             </div>
             <div>
                 <button onClick={handleDelete}
-                    className='p-1 ml-auto text-3xl border-2 rounded-full text-[#f40404] '>
+                    className='p-1 ml-auto text-3xl border border-black rounded-full text-[#f40404] '>
                     <MdOutlineDeleteOutline />
                 </button>
             </div>

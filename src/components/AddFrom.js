@@ -37,7 +37,7 @@ const AddForm = ({refetch}) => {
                         type='text'
                         ref={title}
                         required
-                        placeholder='Write your task ..'
+                        placeholder='Title Here..'
                     />
                     <input className=' px-4 py-3 border-2 border-zinc-300 w-full outline-none focus:ring-2 focus:ring-blue-400 rounded-lg mb-3'
                         type='date'
