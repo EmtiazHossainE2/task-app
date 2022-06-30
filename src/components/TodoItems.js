@@ -15,7 +15,7 @@ const TodoItems = ({ todo, index,openModal,refetch }) => {
         axios.patch(`${BASE_API}/todos/${_id}` , {completed : true})
             .then(response => {
                 console.log(response);
-                toast.success(`Your Task is Updated `, { id: "update" });
+                toast.success(`Your Task is Completed `, { id: "complete" });
                 refetch()
             })
             .catch(function (error) {
