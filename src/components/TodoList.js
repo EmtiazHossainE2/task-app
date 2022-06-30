@@ -1,8 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { BASE_API } from '../config';
+import React, { useRef, useState } from 'react';
 import TodoItems from './TodoItems';
-import { useQuery } from 'react-query';
-import Loading from './Loading';
 
 import Modal from 'react-modal';
 
@@ -19,13 +16,9 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const TodoList = () => {
-    // const [todos,setTodos] = useState([])
-    // useEffect(() =>{
-    //     fetch(`${BASE_API}/todos`)
-    //     .then(res => res.json())
-    //     .then(data =>setTodos(data))
-    // },[])
+
+const TodoList = ({ todos }) => {
+    const [task , setTask] = useState({})
 
     const title = useRef('');
     const date = useRef('');
@@ -41,11 +34,11 @@ const TodoList = () => {
         }
         console.log(todoInfo);
     }
+    const [modalIsOpen, setIsOpen] = React.useState(false);
 
-    const [modalIsOpen, setIsOpen] = useState(false);
-
-    function openModal() {
+    function openModal(todo) {
         setIsOpen(true);
+        setTask(todo)
     }
 
     function afterOpenModal() {
@@ -56,15 +49,6 @@ const TodoList = () => {
     function closeModal() {
         setIsOpen(false);
     }
-
-    const { data: todos, isLoading, error, refetch } = useQuery(('todos'), () =>
-        fetch(`${BASE_API}/todos`)
-            .then(res => res.json())
-    )
-    if (isLoading) {
-        return <Loading />
-    }
-
 
 
 
@@ -84,12 +68,14 @@ const TodoList = () => {
                             <input className=' px-4 py-3 border-2 border-zinc-300 w-full outline-none focus:ring-2 focus:ring-blue-400 rounded-lg mb-3 mr-5'
                                 type='text'
                                 ref={title}
+                                defaultValue={task?.title}
                                 required
                                 placeholder='Write your task ..'
                             />
                             <input className=' px-4 py-3 border-2 border-zinc-300 w-full outline-none focus:ring-2 focus:ring-blue-400 rounded-lg mb-3'
                                 type='date'
                                 ref={date}
+                                defaultValue={task?.date}
                                 required
                                 placeholder='Write your task ..'
                             />
@@ -97,6 +83,7 @@ const TodoList = () => {
                         <input className=' px-4 py-3 border-2 border-zinc-300 w-full outline-none focus:ring-2 focus:ring-blue-400 rounded-lg mb-3'
                             type='text'
                             ref={taskRef}
+                            defaultValue={task?.task}
                             required
                             placeholder='Write your task ..'
                         />
@@ -110,6 +97,7 @@ const TodoList = () => {
                     index={index}
                     todo={todo}
                     openModal={openModal}
+                    setTask={setTask}
                 >
                 </TodoItems>)
             }

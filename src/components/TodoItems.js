@@ -1,5 +1,6 @@
 import React from 'react'
 import { FiEdit } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 
 
@@ -17,7 +18,7 @@ const TodoItems = ({ todo, index,openModal }) => {
 
             </div>
             <div>
-                <button onClick={openModal}
+                <button onClick={() => openModal(todo) }
                     className='px-3 py-2 ml-auto bg-zinc-700 text-white rounded-md'>
                     <FiEdit />
                 </button>

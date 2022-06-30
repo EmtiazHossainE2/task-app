@@ -2,9 +2,8 @@ import axios from 'axios';
 import React, { useRef } from 'react'
 import toast from 'react-hot-toast';
 import { BASE_API } from '../config';
-import Loading from './Loading';
 
-const AddForm = () => {
+const AddForm = ({refetch}) => {
     const title = useRef('');
     const date = useRef('');
     const taskRef = useRef('');
@@ -22,8 +21,8 @@ const AddForm = () => {
             .then(response => {
                 console.log(response);
                 toast.success(`Your Task is Added `, { id: "added" });
-                <Loading/>
                 event.target.reset()
+                refetch()
             })
             .catch(function (error) {
                 toast.error(`Something is wrong . Try later `, { id: "error" });
