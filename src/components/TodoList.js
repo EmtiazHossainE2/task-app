@@ -1,7 +1,11 @@
 import React, { useRef, useState } from 'react';
 import TodoItems from './TodoItems';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 import Modal from 'react-modal';
+import { BASE_API } from '../config';
+import Loading from './Loading';
 
 const customStyles = {
     content: {
@@ -17,23 +21,15 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 
-const TodoList = ({ todos }) => {
-    const [task , setTask] = useState({})
+const TodoList = ({ todos, refetch,isLoading }) => {
+    const [task, setTask] = useState({})
 
     const title = useRef('');
     const date = useRef('');
     const taskRef = useRef('');
 
 
-    const handleSubmit = event => {
-        event.preventDefault()
-        const todoInfo = {
-            title: title.current.value,
-            date: date.current.value,
-            task: taskRef.current.value
-        }
-        console.log(todoInfo);
-    }
+
     const [modalIsOpen, setIsOpen] = React.useState(false);
 
     function openModal(todo) {
@@ -46,9 +42,35 @@ const TodoList = ({ todos }) => {
         // subtitle.style.color = '#f00';
     }
 
+
     function closeModal() {
         setIsOpen(false);
     }
+
+    const handleSubmit = event => {
+        event.preventDefault()
+        const todoInfo = {
+            title: title.current.value,
+            date: date.current.value,
+            task: taskRef.current.value
+        }
+        // console.log(todoInfo);
+        axios.patch(`${BASE_API}/todos/${task._id}`, todoInfo)
+            .then(response => {
+                console.log(response);
+                toast.success(`Your Task is Updated `, { id: "update" });
+                closeModal()
+                refetch()
+            })
+            .catch(function (error) {
+                toast.error(`Something is wrong . Try later `, { id: "error" });
+            });
+    }
+
+    if (isLoading) {
+        return <Loading/>
+    }
+
 
 
 
@@ -60,8 +82,8 @@ const TodoList = ({ todos }) => {
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
-            >   
-            <button className='bg-red-500 rounded-lg text-white px-2 py-1' onClick={closeModal}>X</button>
+            >
+                <button className='bg-red-500 rounded-lg text-white px-2 py-1' onClick={closeModal}>X</button>
                 <div className='mt-5 border-2 shadow-lg p-8 rounded'>
                     <form onSubmit={handleSubmit}>
                         <div className="flex flex-col lg:flex-row justify-between">

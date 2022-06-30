@@ -16,7 +16,7 @@ const Home = () => {
         <Page>
             <Layout>
                 <AddForm refetch={refetch}/>
-                <TodoList todos={todos}/>
+                <TodoList refetch={refetch} isLoading={isLoading} todos={todos}/>
             </Layout>
         </Page>
     );

@@ -11,13 +11,15 @@ const Footer = () => {
                     <div className='flex justify-center items-center'>
                         <h1 className='text-xl font-bold'>Copyright &copy; {year} </h1>
                     </div>
-                    <div>
-                        <h1 className='text-xl font-bold'>Contact</h1>
-                        <ul className='text-zinc-400 text-lg'>
-                            <li className='flex items-end gap-2'>
-                                <AiFillMail /> contact@taskapp.com
-                            </li>
-                        </ul>
+                    <div className='flex justify-center items-center '>
+                        <div className='text-center lg:text-left mt-5 lg:mt-0'>
+                            <h1 className='text-xl font-bold'>Contact</h1>
+                            <ul className='text-zinc-400 text-lg'>
+                                <li className='flex items-end gap-2'>
+                                    <AiFillMail /> contact@taskapp.com
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

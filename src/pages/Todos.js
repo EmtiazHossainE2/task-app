@@ -6,7 +6,7 @@ import TodoList from '../components/TodoList';
 import useTodos from '../hooks/useTodos';
 
 const Todos = () => {
-    const {todos, isLoading } = useTodos()
+    const {todos, isLoading , refetch} = useTodos()
     
     if (isLoading) {
         return <Loading />
@@ -15,7 +15,7 @@ const Todos = () => {
         <Page>
             <Layout>
                 <h2 className='text-center py-5 text-2xl font-bold'>All Task</h2>
-                <TodoList todos={todos}/>
+                <TodoList refetch={refetch} isLoading={isLoading} todos={todos}/>
             </Layout>
         </Page>
     );
