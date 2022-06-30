@@ -2,11 +2,13 @@ import axios from 'axios';
 import React, { useRef } from 'react'
 import toast from 'react-hot-toast';
 import { BASE_API } from '../config';
+import Loading from './Loading';
 
 const AddForm = () => {
     const title = useRef('');
     const date = useRef('');
     const taskRef = useRef('');
+    
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -20,6 +22,7 @@ const AddForm = () => {
             .then(response => {
                 console.log(response);
                 toast.success(`Your Task is Added `, { id: "added" });
+                <Loading/>
                 event.target.reset()
             })
             .catch(function (error) {

@@ -1,34 +1,25 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import { FiEdit } from 'react-icons/fi';
-import { BsSave } from 'react-icons/bs';
 
-const TodoItems = () => {
-    const [edit, setEdit] = useState(false)
-
-    const editMode = () => {
-        setEdit(false)
-    }
+const TodoItems = ({ todo, index }) => {
+    const { title, date, task } = todo
 
     return (
-        <div className='px-4 py-3 flex items-center gap-5 border-2 border-zinc-400 rounded-md'>
-            {edit
-                ? <input type="text" className='outline-none p-2 focus:ring-1 focus:ring-blue-400 w-full' defaultValue="This is a sample text" />
-                :  <p className='text-xl font-semibold'>This is a sample text</p>
-            }
-            {edit
-                ? <button
-                    onClick={editMode}
-                    className='px-3 py-2 ml-auto bg-green-500 text-white rounded-md'>
-                    {/* <BsSave/> */}
-                    Save
-                </button>
+        <div className='px-4 py-3 flex justify-between gap-5 border-2 border-zinc-400 rounded-md'>
+            <div className="flex flex-col justify-evenly ">
+                <div className="flex gap-x-5">
+                    <span className='text-xl font-semibold capitalize'>{index + 1}. {title}</span>
+                    <small className=' font-semibold border p-2 rounded-full'>{date}</small>
+                </div>
+                <p className=' font-semibold'>{task}</p>
 
-                : <button
-                    onClick={() => setEdit(true)}
+            </div>
+            <div>
+                <button
                     className='px-3 py-2 ml-auto bg-zinc-700 text-white rounded-md'>
-                    <FiEdit/>
+                    <FiEdit />
                 </button>
-            }
+            </div>
         </div>
     )
 }
